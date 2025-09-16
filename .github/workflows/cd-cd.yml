@@ -28,4 +28,4 @@ jobs:
           docker ps
           # docker stop cicd_demo_app || true
           # docker rm cicd_demo_app || true
-          docker run -d --name cicd_demo_app -p 3000:3000 cicd-demo:latest
+          docker run -d --name cicd_demo_app -p 3000:3000 cicd-demo
