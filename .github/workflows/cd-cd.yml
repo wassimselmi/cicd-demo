@@ -1,32 +1,23 @@
-name: Build and Deploy in Codespaces
+name: Build and Deploy Docker App to Azure
 
-# Trigger the workflow when you push to main branch
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v3
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: |
-          docker build -t cicd-demo .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/cicd-demo:latest .
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy locally in Codespaces
-        run: |
-          docker ps
-          docker images
-          # docker stop cicd_demo_app || true
-          # docker rm cicd_demo_app || true
-          docker run -d --name cicd_demo_app -p 3000:3000 cicd-demo
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/cicd-demo:latest
