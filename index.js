@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello from CI/CD demo For azure now! Using docker Hub 🛠️');
+  res.send('Hello from CI/CD demo For azure now! Using docker Hub and its on CD mode🛠️');
 });
 
 app.get('/health', (req, res) => {
