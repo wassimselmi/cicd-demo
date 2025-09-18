@@ -23,6 +23,10 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/cicd-demo:latest
 
+
+      - name: Wait for Azure readiness
+        run: sleep 60
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
