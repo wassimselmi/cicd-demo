@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.send('Project should be launched Soon! 🛠️');
 });
 
+app.get('/test', (req, res) => {
+  res.send('more test inc! 🛠️');
+});
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', time: new Date() });
 });
