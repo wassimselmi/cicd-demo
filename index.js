@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello! CI CD project under maintenance! Thank you - Working Team 🛠️');
+  res.send('Hello! CI CD project under maintenance! - Working Team 🛠️');
 });
 
 app.get('/health', (req, res) => {
