@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello Testers! CI CD project under maintenance and added webhook! Thanks - From Working Team 🛠️');
+  res.send('Project should be launched Soon! 🛠️');
 });
 
 app.get('/health', (req, res) => {
